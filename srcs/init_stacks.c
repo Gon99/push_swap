@@ -1,29 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   init_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/17 12:28:47 by goliano-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:57:34 by goliano-         ###   ########.fr       */
+/*   Created: 2021/09/21 12:46:16 by goliano-          #+#    #+#             */
+/*   Updated: 2021/09/21 15:21:32 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	main(int argc, char **argv)
+void	init_stacks(int argc, char **argv, t_stack *n_stack)
 {
-	int	r;
-	t_stack	n_stack;
-	
-	r = handle_params(argc, argv);
-	init_stacks(argc, argv, &n_stack);
-	do_pa(&n_stack);
-	printf("V1: %d\n", n_stack.stack_a[0]);
-	printf("V2: %d\n", n_stack.stack_a[1]);
-	printf("V3: %d\n", n_stack.stack_a[2]);
-	printf("V4: %d\n", n_stack.stack_a[3]);
-	printf("R: %d\n", r);
-	return (0);
+	int	i;
+	size_t	x;
+
+	i = 1;
+	x = 0;
+	n_stack->stack_a = ft_calloc(argc - 1, sizeof(int));
+	//n_stack->stack_b = ft_calloc(argc - 1, sizeof(int));
+	if (!n_stack->stack_a /*|| !n_stack->stack_b*/)
+		return ;
+	n_stack->l = argc - 1;
+	while (i < argc)
+		n_stack->stack_a[x++] = ft_atoi(argv[i++]);
 }

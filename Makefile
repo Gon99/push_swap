@@ -6,12 +6,15 @@
 #    By: goliano- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/09/17 13:41:47 by goliano-          #+#    #+#              #
-#    Updated: 2021/09/17 15:55:08 by goliano-         ###   ########.fr        #
+#    Updated: 2021/09/21 16:37:14 by goliano-         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = ./utils/param_checker.c ./srcs/push_swap.c ./utils/ft_strcmp.c \
-	   ./utils/ft_atoi.c
+SRCS = ./srcs/param_checker.c ./srcs/push_swap.c ./utils/ft_strcmp.c \
+	   ./utils/ft_atoi.c ./srcs/init_stacks.c ./utils/ft_calloc.c \
+	   ./actions/s_actions.c ./actions/r_actions.c ./utils/ft_memset.c \
+	   ./actions/p_actions.c
+	
 OBJS = ${SRCS:.c=.o}
 NAME = push_swap
 CC = cc
