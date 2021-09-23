@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 12:27:28 by goliano-          #+#    #+#             */
-/*   Updated: 2021/09/21 16:41:13 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/09/23 12:31:09 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ typedef struct n_stack
 {
 	int	*stack_a;
     int *stack_b;
-    int l;
+    int l_a;
+	int	l_b;
 }	t_stack;
 
 int		handle_params(int argc, char **params);

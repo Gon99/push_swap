@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:46:16 by goliano-          #+#    #+#             */
-/*   Updated: 2021/09/21 15:21:32 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/09/23 14:32:50 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ void	init_stacks(int argc, char **argv, t_stack *n_stack)
 	//n_stack->stack_b = ft_calloc(argc - 1, sizeof(int));
 	if (!n_stack->stack_a /*|| !n_stack->stack_b*/)
 		return ;
-	n_stack->l = argc - 1;
+	n_stack->l_a = argc - 1;
+	n_stack->l_b = 0;
 	while (i < argc)
 		n_stack->stack_a[x++] = ft_atoi(argv[i++]);
 }
