@@ -13,7 +13,7 @@
 SRCS = ./srcs/param_checker.c ./srcs/push_swap.c ./utils/ft_strcmp.c \
 	   ./utils/ft_atoi.c ./srcs/init_stacks.c ./utils/ft_calloc.c \
 	   ./actions/s_actions.c ./actions/r_actions.c ./utils/ft_memset.c \
-	   ./actions/p_actions.c
+	   ./actions/p_actions.c ./actions/rr_actions.c ./utils/ft_memcpy.c
 	
 OBJS = ${SRCS:.c=.o}
 NAME = push_swap

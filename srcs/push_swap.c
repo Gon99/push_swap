@@ -19,11 +19,30 @@ int	main(int argc, char **argv)
 	
 	r = handle_params(argc, argv);
 	init_stacks(argc, argv, &n_stack);
+	//do_pa(&n_stack);
+	//do_sa(&n_stack);
+	do_pb(&n_stack);
+	do_pb(&n_stack);
+	do_pb(&n_stack);
+	do_rrb(&n_stack);
+	//do_ra(&n_stack);
+	//do_pb(&n_stack);
 	do_pa(&n_stack);
-	printf("V1: %d\n", n_stack.stack_a[0]);
-	printf("V2: %d\n", n_stack.stack_a[1]);
-	printf("V3: %d\n", n_stack.stack_a[2]);
-	printf("V4: %d\n", n_stack.stack_a[3]);
+	do_pa(&n_stack);
+	do_pa(&n_stack);
+	//do_pb(&n_stack);
+	//do_pb(&n_stack);
+	//do_pa(&n_stack);
+	//do_pa(&n_stack);
+	//do_pa(&n_stack);
+	printf("VA1: %d\n", n_stack.stack_a[0]);
+	printf("VA2: %d\n", n_stack.stack_a[1]);
+	printf("VA3: %d\n", n_stack.stack_a[2]);
+	printf("VA4: %d\n", n_stack.stack_a[3]);
+	printf("VB1: %d\n", n_stack.stack_b[0]);
+	printf("VB2: %d\n", n_stack.stack_b[1]);
+	printf("VB3: %d\n", n_stack.stack_b[2]);
 	printf("R: %d\n", r);
+	system("leaks -q a.out");
 	return (0);
 }
