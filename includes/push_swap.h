@@ -25,10 +25,16 @@ typedef struct n_stack
 	int	l_b;
 }	t_stack;
 
+typedef struct s_stack
+{
+    int *ss;
+    int l;
+}   ts_stack;
+
 int		handle_params(int argc, char **params);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_atoi(char const *str);
-void	init_stacks(int argc, char **argv, t_stack *n_stack);
+void	init_stacks(int argc, char **argv, t_stack *n_stack, ts_stack *s_stack);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
 void	*ft_memcpy(void *dst, const void *src, size_t n);
@@ -44,5 +50,7 @@ void    do_rrr(t_stack *n_stack);
 void	do_pa(t_stack *n_stack);
 void    do_pb(t_stack *n_stack);
 void    short_sort(t_stack *n_stack);
+void    mp_algorithm(t_stack *n_stack, ts_stack *s_stack);
+void    sort_n_stack(ts_stack *s_stack);
 
 #endif

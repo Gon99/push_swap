@@ -6,13 +6,13 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:46:16 by goliano-          #+#    #+#             */
-/*   Updated: 2021/09/28 13:26:10 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/09/30 14:48:14 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	init_stacks(int argc, char **argv, t_stack *n_stack)
+void	init_stacks(int argc, char **argv, t_stack *n_stack, ts_stack *s_stack)
 {
 	int	i;
 	size_t	x;
@@ -21,10 +21,17 @@ void	init_stacks(int argc, char **argv, t_stack *n_stack)
 	x = 0;
 	n_stack->stack_a = ft_calloc(argc - 1, sizeof(int));
 	n_stack->stack_b = ft_calloc(argc - 1, sizeof(int));
+	s_stack->ss = ft_calloc(argc - 1, sizeof(int));
 	if (!n_stack->stack_a || !n_stack->stack_b)
 		return ;
 	n_stack->l_a = argc - 1;
+	s_stack->l = argc - 1;
 	n_stack->l_b = 0;
 	while (i < argc)
-		n_stack->stack_a[x++] = ft_atoi(argv[i++]);
+	{
+		n_stack->stack_a[x] = ft_atoi(argv[i]);
+		s_stack->ss[x] = ft_atoi(argv[i]);
+		x++;
+		i++;
+	}
 }

@@ -14,7 +14,8 @@ SRCS = ./srcs/param_checker.c ./srcs/push_swap.c ./utils/ft_strcmp.c \
 	   ./utils/ft_atoi.c ./srcs/init_stacks.c ./utils/ft_calloc.c \
 	   ./actions/s_actions.c ./actions/r_actions.c ./utils/ft_memset.c \
 	   ./actions/p_actions.c ./actions/rr_actions.c ./utils/ft_memcpy.c \
-	   ./sort_algorithm/short_sort.c
+	   ./sort_algorithm/short_sort.c ./sort_algorithm/mp_algorithm.c \
+		./sort_algorithm/sort_n_stack.c
 	
 OBJS = ${SRCS:.c=.o}
 NAME = push_swap
