@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 12:28:47 by goliano-          #+#    #+#             */
-/*   Updated: 2021/09/30 19:03:27 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/01 17:00:43 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,22 +21,14 @@ int	main(int argc, char **argv)
 	r = handle_params(argc, argv);
 	init_stacks(argc, argv, &n_stack, &s_stack);
 	sort_n_stack(&s_stack);
-	mp_algorithm(&n_stack, &s_stack);
-	/*if (argc - 1 < 6)
-		short_sort(&n_stack);*/
-	//do_pa(&n_stack);
-	//do_sa(&n_stack);
-	//do_pb(&n_stack);
-	//do_pb(&n_stack);
-	//do_pb(&n_stack);
-	//do_rrb(&n_stack);
-	//do_ra(&n_stack);
-	//do_pb(&n_stack);
-	//do_pb(&n_stack);
-	//do_pb(&n_stack);
-	//do_pa(&n_stack);
-	//do_pa(&n_stack);
-	//do_pa(&n_stack);
+	while (n_stack.l_a > 2)
+	{
+		mp_algorithm(&n_stack, &s_stack);
+		s_stack.l = n_stack.l_a;
+		ft_memcpy(s_stack.ss, n_stack.stack_a, n_stack.l_a);
+		sort_n_stack(&s_stack);
+	}
+	printf("LA1: %d\n", n_stack.l_a);
 	printf("VA1: %d\n", n_stack.stack_a[0]);
 	printf("VA2: %d\n", n_stack.stack_a[1]);
 	printf("VA3: %d\n", n_stack.stack_a[2]);
