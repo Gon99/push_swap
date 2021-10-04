@@ -6,13 +6,13 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:57:19 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/01 17:00:37 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/04 11:45:43 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-int	a_is_sorted(t_stack *n_stack)
+static int	a_is_sorted(t_stack *n_stack)
 {
 	int	i;
 	int	is_sorted;
@@ -55,9 +55,11 @@ static void	do_second_half(t_stack *n_stack, ts_stack *s_stack, int hl, int *na)
 		else
 			do_ra(n_stack);
 	}
+	if (n_stack->stack_a[0] > n_stack->stack_a[1])
+		do_sa(n_stack);
 }
 
-void	mp_algorithm(t_stack *n_stack, ts_stack *s_stack)
+void	mp_algorithm_a(t_stack *n_stack, ts_stack *s_stack)
 {
 	int	hl;
 	int	na;

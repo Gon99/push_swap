@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 12:28:47 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/01 17:00:43 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/04 14:51:53 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(int argc, char **argv)
 	sort_n_stack(&s_stack);
 	while (n_stack.l_a > 2)
 	{
-		mp_algorithm(&n_stack, &s_stack);
+		mp_algorithm_a(&n_stack, &s_stack);
 		s_stack.l = n_stack.l_a;
 		ft_memcpy(s_stack.ss, n_stack.stack_a, n_stack.l_a);
 		sort_n_stack(&s_stack);

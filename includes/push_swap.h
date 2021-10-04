@@ -50,7 +50,8 @@ void    do_rrr(t_stack *n_stack);
 void	do_pa(t_stack *n_stack);
 void    do_pb(t_stack *n_stack);
 void    short_sort(t_stack *n_stack);
-void    mp_algorithm(t_stack *n_stack, ts_stack *s_stack);
+void    mp_algorithm_a(t_stack *n_stack, ts_stack *s_stack);
+void    mp_algorithm_b(t_stack *n_stack, ts_stack *s_stack);
 void    sort_n_stack(ts_stack *s_stack);
 
 #endif
