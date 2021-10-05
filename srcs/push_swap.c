@@ -28,6 +28,7 @@ int	main(int argc, char **argv)
 		ft_memcpy(s_stack.ss, n_stack.stack_a, n_stack.l_a);
 		sort_n_stack(&s_stack);
 	}
+	mp_algorithm_b(&n_stack, &s_stack);
 	printf("LA1: %d\n", n_stack.l_a);
 	printf("VA1: %d\n", n_stack.stack_a[0]);
 	printf("VA2: %d\n", n_stack.stack_a[1]);

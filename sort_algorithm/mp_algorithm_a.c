@@ -55,8 +55,9 @@ static void	do_second_half(t_stack *n_stack, ts_stack *s_stack, int hl, int *na)
 		else
 			do_ra(n_stack);
 	}
-	if (n_stack->stack_a[0] > n_stack->stack_a[1])
-		do_sa(n_stack);
+    // fuera del while ultima ordenacion sa con dos numeros
+	//if (n_stack->stack_a[0] > n_stack->stack_a[1])
+		//do_sa(n_stack);
 }
 
 void	mp_algorithm_a(t_stack *n_stack, ts_stack *s_stack)
