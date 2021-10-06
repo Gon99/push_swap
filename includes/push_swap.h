@@ -34,6 +34,7 @@ typedef struct s_stack
 int		handle_params(int argc, char **params);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_atoi(char const *str);
+int     a_is_sorted(t_stack *n_stack);
 void	init_stacks(int argc, char **argv, t_stack *n_stack, ts_stack *s_stack);
 void	*ft_calloc(size_t count, size_t size);
 void	*ft_memset(void *b, int c, size_t len);
@@ -51,7 +52,7 @@ void	do_pa(t_stack *n_stack);
 void    do_pb(t_stack *n_stack);
 void    short_sort(t_stack *n_stack);
 void    mp_algorithm_a(t_stack *n_stack, ts_stack *s_stack);
-void    mp_algorithm_b(t_stack *n_stack, ts_stack *s_stack);
+void    mp_algorithm_b(t_stack *n_stack, ts_stack *s_stack, int is);
 void    sort_n_stack(ts_stack *s_stack);
 
 #endif

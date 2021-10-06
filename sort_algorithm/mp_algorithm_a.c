@@ -6,13 +6,13 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:57:19 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/04 11:45:43 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/06 12:40:10 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	a_is_sorted(t_stack *n_stack)
+int	a_is_sorted(t_stack *n_stack)
 {
 	int	i;
 	int	is_sorted;

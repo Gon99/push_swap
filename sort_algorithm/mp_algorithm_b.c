@@ -6,27 +6,11 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:55:14 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/04 14:51:56 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/06 16:02:24 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-/*static int	b_is_sorted(t_stack *n_stack)
-{
-	int	i;
-	int	is_sorted;
-
-	i = 0;
-	is_sorted = 1;
-	while (i < n_stack->l_b - 1 && is_sorted == 1)
-	{
-		if (n_stack->stack_b[i] < n_stack->stack_b[i + 1])
-			is_sorted = 0;
-		i++;
-	}
-	return (is_sorted);
-}*/
 
 static int	n_of_chunks(t_stack *n_stack)
 {
@@ -125,7 +109,7 @@ static void	do_last_chunk_b(t_stack *n_stack, ts_stack *s_stack, int chunk)
 			do_pa(n_stack);
 			nta--;
 		}
-		else if (n_stack->stack_b[n_stack->l_b] > s_stack->ss[hl])
+		else if (n_stack->stack_b[n_stack->l_b - 1] > s_stack->ss[hl])
 		{
 			do_rrb(n_stack);
 			do_pa(n_stack);
@@ -148,13 +132,15 @@ static void	do_mp_b(t_stack *n_stack, ts_stack *s_stack, int chunk, int nc)
 		do_second_half_b(n_stack, s_stack, chunk);
 }
 
-void	mp_algorithm_b(t_stack *n_stack, ts_stack *s_stack)
+void	mp_algorithm_b(t_stack *n_stack, ts_stack *s_stack, int is)
 {
 	int	chunk;
 	int	nc;
 
 	s_stack->l = 0;
 	nc = n_of_chunks(n_stack);
+	if (is == 1)
+		nc--;
 	while (nc > 0)
 	{
 		chunk = get_chunk(n_stack, nc);
