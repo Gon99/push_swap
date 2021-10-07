@@ -6,15 +6,15 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:46:16 by goliano-          #+#    #+#             */
-/*   Updated: 2021/09/30 14:48:14 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:28:46 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	init_stacks(int argc, char **argv, t_stack *n_stack, ts_stack *s_stack)
+void	init_stacks(int argc, char **argv, t_stack *n_stack, t_sstack *s_stack)
 {
-	int	i;
+	int		i;
 	size_t	x;
 
 	i = 1;

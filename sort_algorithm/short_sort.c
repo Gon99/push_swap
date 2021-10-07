@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 15:19:48 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/06 13:58:23 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/07 16:22:14 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	three_sort(t_stack *n_stack)
 		if (n_stack->stack_a[i] < n_stack->stack_a[i + 1] && \
 				n_stack->stack_a[i] > n_stack->stack_a[n_stack->l_a - 1])
 			do_rra(n_stack);
-		else if(n_stack->stack_a[i] > n_stack->stack_a[i + 1] && \
+		else if (n_stack->stack_a[i] > n_stack->stack_a[i + 1] && \
 				n_stack->stack_a[i] > n_stack->stack_a[n_stack->l_a - 1])
 			do_ra(n_stack);
 		else
@@ -45,11 +45,14 @@ void	three_sort(t_stack *n_stack)
 	{
 		if (is_sorted(n_stack))
 			break ;
-		if (n_stack->stack_a[0] > n_stack->stack_a[1] && n_stack->stack_a[0] < n_stack->stack_a[n_stack->l_a - 1])
+		if (n_stack->stack_a[0] > n_stack->stack_a[1] && \
+			n_stack->stack_a[0] < n_stack->stack_a[n_stack->l_a - 1])
 			do_rra(n_stack);
-		else if(n_stack->stack_a[0] > n_stack->stack_a[n_stack->l_a - 1] && n_stack->stack_a[0] < n_stack->stack_a[1])
+		else if(n_stack->stack_a[0] > n_stack->stack_a[n_stack->l_a - 1] \
+			&& n_stack->stack_a[0] < n_stack->stack_a[1])
 			do_ra(n_stack);
-		else if(n_stack->stack_a[0] > n_stack->stack_a[1]  && n_stack->stack_a[1] > n_stack->stack_a[2])
+		else if(n_stack->stack_a[0] > n_stack->stack_a[1] \
+	   	&& n_stack->stack_a[1] > n_stack->stack_a[2])
 			do_sa(n_stack);
 		i++;
 	}
@@ -57,7 +60,7 @@ void	three_sort(t_stack *n_stack)
 		do_ra(n_stack);
 }*/
 
-void	more_than_three(t_stack *n_stack)
+/*void	more_than_three(t_stack *n_stack)
 {
 	int	min;
 	int	i;
@@ -88,20 +91,20 @@ void	more_than_three(t_stack *n_stack)
 		do_rra(n_stack);
 		do_pb(n_stack);
 	}
-}
+}*/
 
 void	short_sort(t_stack *n_stack)
 {
 	if (a_is_sorted(n_stack))
 		return ;
-	while (n_stack->l_a > 3)
-		more_than_three(n_stack);
-	/*three_sort(n_stack);
+	/*while (n_stack->l_a > 3)
+		more_than_three(n_stack);*/
+	three_sort(n_stack);
+	/*if (n_stack->l_b > 0)
+		do_pa(n_stack);
+	short_four(n_stack);
 	if (n_stack->l_b > 0)
 		do_pa(n_stack);
-	//short_four(n_stack);
-	if (n_stack->l_b > 0)
-		do_pa(n_stack);*/
-	//do_ra(n_stack);
-	//do_pa(n_stack);
+	do_ra(n_stack);
+	do_pa(n_stack);*/
 }

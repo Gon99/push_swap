@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:57:19 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/06 12:40:10 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/07 15:17:40 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	a_is_sorted(t_stack *n_stack)
 	return (is_sorted);
 }
 
-static void	do_first_half(t_stack *n_stack, ts_stack *s_stack, int hl, int *na)
+static void	do_first_half(t_stack *n_stack, t_sstack *s_stack, int hl, int *na)
 {
 	while (n_stack->stack_a[0] < s_stack->ss[hl])
 	{
@@ -37,13 +37,13 @@ static void	do_first_half(t_stack *n_stack, ts_stack *s_stack, int hl, int *na)
 	}
 }
 
-static void	do_second_half(t_stack *n_stack, ts_stack *s_stack, int hl, int *na)
+static void	do_second_half(t_stack *n_stack, t_sstack *s_stack, int hl, int *na)
 {
 	while (n_stack->stack_a[n_stack->l_a - 1] < s_stack->ss[hl])
 	{
 		*na = *na + 1;
 		do_rra(n_stack);
-		do_pb(n_stack);	
+		do_pb(n_stack);
 	}
 	while (*na < hl)
 	{
@@ -55,12 +55,9 @@ static void	do_second_half(t_stack *n_stack, ts_stack *s_stack, int hl, int *na)
 		else
 			do_ra(n_stack);
 	}
-    // fuera del while ultima ordenacion sa con dos numeros
-	//if (n_stack->stack_a[0] > n_stack->stack_a[1])
-		//do_sa(n_stack);
 }
 
-void	mp_algorithm_a(t_stack *n_stack, ts_stack *s_stack)
+void	mp_algorithm_a(t_stack *n_stack, t_sstack *s_stack)
 {
 	int	hl;
 	int	na;
