@@ -48,24 +48,26 @@ int	get_chunk(t_stack *n_stack, int nc)
 	return (r);
 }
 
-void	do_last_chunk_b(t_stack *n_stack, t_sstack *s_stack, int chunk)
+void	do_last_chunk_b(t_stack *n_stack, t_sstack *s_stack, int *chunk)
 {
 	int	nta;
 	int	hl;
 
-	hl = chunk / 2;
-	nta = chunk - (hl + 1);
+	hl = *chunk / 2;
+	nta = *chunk - (hl + 1);
 	while (nta > 0)
 	{
 		if (n_stack->stack_b[0] > s_stack->ss[hl])
 		{
 			do_pa(n_stack);
 			nta--;
+			*chunk = *chunk - 1;
 		}
 		else if (n_stack->stack_b[n_stack->l_b - 1] > s_stack->ss[hl])
 		{
 			do_rrb(n_stack);
 			do_pa(n_stack);
+			*chunk = *chunk - 1;
 			nta--;
 		}
 		else

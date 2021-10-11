@@ -28,28 +28,32 @@ int	b_is_sorted(t_stack *n_stack)
 	return (is_sorted);
 }
 
-static void	handle_two_b(t_stack *n_stack)
+static void	handle_two_b(t_stack *n_stack, int *chunk)
 {
 	if (n_stack->stack_b[0] < n_stack->stack_b[1])
 		do_sb(n_stack);
 	do_pa(n_stack);
 	do_pa(n_stack);
+	*chunk -= 2;
 }
 
-static void	do_second_half_b(t_stack *n_stack, t_sstack *s_stack, int chunk)
+static void	do_second_half_b(t_stack *n_stack, t_sstack *s_stack, int *chunk)
 {
 	int	crb;
 	int	nta;
 	int	hl;
 
 	crb = 0;
-	hl = chunk / 2;
-	nta = chunk - (hl + 1);
+	hl = *chunk / 2;
+	nta = *chunk - (hl + 1);
+	printf("PARO");
+	return ;
 	while (nta > 0)
 	{
 		if (n_stack->stack_b[0] > s_stack->ss[hl])
 		{
 			do_pa(n_stack);
+			*chunk = *chunk - 1;
 			nta--;
 		}
 		else
@@ -65,13 +69,11 @@ static void	do_second_half_b(t_stack *n_stack, t_sstack *s_stack, int chunk)
 	}
 }
 
-static void	do_mp_b(t_stack *n_stack, t_sstack *s_stack, int chunk, int nc)
+static void	do_mp_b(t_stack *n_stack, t_sstack *s_stack, int *chunk, int nc)
 {
-	ft_memcpy(s_stack->ss, n_stack->stack_b, chunk);
-	s_stack->l = chunk;
+	ft_memcpy(s_stack->ss, n_stack->stack_b, *chunk);
+	s_stack->l = *chunk;
 	sort_n_stack(s_stack);
-	while (n_stack->stack_b[0] > s_stack->ss[chunk / 2])
-		do_pa(n_stack);
 	if (nc == 1)
 		do_last_chunk_b(n_stack, s_stack, chunk);
 	else
@@ -87,15 +89,21 @@ void	mp_algorithm_b(t_stack *n_stack, t_sstack *s_stack, int is)
 	nc = n_of_chunks(n_stack);
 	if (is == 1)
 		nc--;
+	chunk = 0;
 	while (nc > 0)
 	{
-		chunk = get_chunk(n_stack, nc);
+		if (chunk == 0)
+			chunk = get_chunk(n_stack, nc);
 		if (chunk == 1)
+		{
 			do_pa(n_stack);
+			chunk--;
+		}
 		else if (chunk == 2)
-			handle_two_b(n_stack);
+			handle_two_b(n_stack, &chunk);
 		else
-			do_mp_b(n_stack, s_stack, chunk, nc);
-		nc--;
+			do_mp_b(n_stack, s_stack, &chunk, nc);
+		if (chunk == 0)
+			nc--;
 	}
 }

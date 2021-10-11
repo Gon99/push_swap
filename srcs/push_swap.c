@@ -66,18 +66,40 @@ int	main(int argc, char **argv)
 	init_stacks(argc, argv, &n_stack, &s_stack);
 	if (argc - 1 == 3)
 		short_sort(&n_stack);
-	is = handle_stack_a(&n_stack, &s_stack);
-	handle_stack_b(&n_stack, &s_stack, is);
+	int	x = 0;
+	while(!a_is_sorted(&n_stack))
+	{
+		if (x == 2)
+			break;
+		is = handle_stack_a(&n_stack, &s_stack);
+		handle_stack_b(&n_stack, &s_stack, is);
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		printf("\n");
+		x++;
+	}
+	printf("IS: %d\n", is);
 	printf("VA1: %d\n", n_stack.stack_a[0]);
 	printf("VA2: %d\n", n_stack.stack_a[1]);
 	printf("VA3: %d\n", n_stack.stack_a[2]);
 	printf("VA4: %d\n", n_stack.stack_a[3]);
 	printf("VA5: %d\n", n_stack.stack_a[4]);
 	printf("VA6: %d\n", n_stack.stack_a[5]);
-    printf("VA7: %d\n", n_stack.stack_a[6]);
-    printf("VA8: %d\n", n_stack.stack_a[7]);
-    printf("VA9: %d\n", n_stack.stack_a[8]);
-    printf("VA10: %d\n", n_stack.stack_a[9]);
+    	printf("VA7: %d\n", n_stack.stack_a[6]);
+   	printf("VA8: %d\n", n_stack.stack_a[7]);
+   	printf("VA9: %d\n", n_stack.stack_a[8]);
+    	printf("VA10: %d\n", n_stack.stack_a[9]);
+	printf("VA11: %d\n", n_stack.stack_a[10]);
+	printf("VA12: %d\n", n_stack.stack_a[11]);
+	printf("VA13: %d\n", n_stack.stack_a[12]);
+	printf("VA14: %d\n", n_stack.stack_a[13]);
+	printf("VA15: %d\n", n_stack.stack_a[14]);
+	printf("VA16: %d\n", n_stack.stack_a[15]);
+    	printf("VA17: %d\n", n_stack.stack_a[16]);
+    	printf("VA18: %d\n", n_stack.stack_a[17]);
+    	printf("VA19: %d\n", n_stack.stack_a[18]);
+    	printf("VA20: %d\n", n_stack.stack_a[19]);
 	printf("R: %d\n", r);
 	return (0);
 }

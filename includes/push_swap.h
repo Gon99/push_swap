@@ -57,6 +57,6 @@ void	mp_algorithm_b(t_stack *n_stack, t_sstack *s_stack, int is);
 void	sort_n_stack(t_sstack *s_stack);
 int		n_of_chunks(t_stack *n_stack);
 int		get_chunk(t_stack *n_stack, int nc);
-void	do_last_chunk_b(t_stack *n_stack, t_sstack *s_stack, int chunk);
+void	do_last_chunk_b(t_stack *n_stack, t_sstack *s_stack, int *chunk);
 
 #endif
