@@ -46,8 +46,6 @@ static void	do_second_half_b(t_stack *n_stack, t_sstack *s_stack, int *chunk)
 	crb = 0;
 	hl = *chunk / 2;
 	nta = *chunk - (hl + 1);
-	printf("PARO");
-	return ;
 	while (nta > 0)
 	{
 		if (n_stack->stack_b[0] > s_stack->ss[hl])
@@ -75,7 +73,9 @@ static void	do_mp_b(t_stack *n_stack, t_sstack *s_stack, int *chunk, int nc)
 	s_stack->l = *chunk;
 	sort_n_stack(s_stack);
 	if (nc == 1)
+	{
 		do_last_chunk_b(n_stack, s_stack, chunk);
+		}
 	else
 		do_second_half_b(n_stack, s_stack, chunk);
 }
@@ -86,9 +86,10 @@ void	mp_algorithm_b(t_stack *n_stack, t_sstack *s_stack, int is)
 	int	nc;
 
 	s_stack->l = 0;
+	printf("IS2: %d\n", is);
 	nc = n_of_chunks(n_stack);
-	if (is == 1)
-		nc--;
+	/*if (is == 1)
+		nc -= 2;*/
 	chunk = 0;
 	while (nc > 0)
 	{
