@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:36:51 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/07 13:17:03 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/13 11:42:50 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,6 @@ int	n_of_chunks(t_stack *n_stack)
 	int	div;
 
 	tl = n_stack->l_a + n_stack->l_b;
-	//printf("TL: %d\n", tl);
-	//printf("LA: %d\n", n_stack->l_a);
-	//printf("LB: %d\n", n_stack->l_b);
-	//return (0);
 	div = 0;
 	r = 0;
 	while (tl > 1)

@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:57:19 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/07 15:17:40 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/13 14:10:00 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,16 @@ int	a_is_sorted(t_stack *n_stack)
 		i++;
 	}
 	return (is_sorted);
+}
+
+void print_s(t_sstack *s_stack)
+{
+	int	i = 0;
+	while (i < s_stack->l -1)
+	{
+		printf("s[%d]: %d\n", i, s_stack->ss[i]);
+		i++;
+	}
 }
 
 static void	do_first_half(t_stack *n_stack, t_sstack *s_stack, int hl, int *na)

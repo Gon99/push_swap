@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:55:14 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/07 15:35:36 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/13 12:17:08 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ static void	do_second_half_b(t_stack *n_stack, t_sstack *s_stack, int *chunk)
 	{
 		if (n_stack->stack_b[0] > s_stack->ss[hl])
 		{
+            if (n_stack->stack_b[0] < n_stack->stack_b[1])
+                do_sb(n_stack);
 			do_pa(n_stack);
 			*chunk = *chunk - 1;
 			nta--;
@@ -73,23 +75,18 @@ static void	do_mp_b(t_stack *n_stack, t_sstack *s_stack, int *chunk, int nc)
 	s_stack->l = *chunk;
 	sort_n_stack(s_stack);
 	if (nc == 1)
-	{
 		do_last_chunk_b(n_stack, s_stack, chunk);
-		}
 	else
 		do_second_half_b(n_stack, s_stack, chunk);
 }
 
-void	mp_algorithm_b(t_stack *n_stack, t_sstack *s_stack, int is)
+void	mp_algorithm_b(t_stack *n_stack, t_sstack *s_stack)
 {
 	int	chunk;
 	int	nc;
 
 	s_stack->l = 0;
-	printf("IS2: %d\n", is);
 	nc = n_of_chunks(n_stack);
-	/*if (is == 1)
-		nc -= 2;*/
 	chunk = 0;
 	while (nc > 0)
 	{
