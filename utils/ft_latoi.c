@@ -47,6 +47,5 @@ int	ft_latoi(const char *str)
 		res = -res;
 	if (res > 2147483647 || res < -2147483648)
 		return (0);
-     printf("RES: %ld\n", res);
 	return (res);
 }

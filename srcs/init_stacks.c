@@ -12,26 +12,105 @@
 
 #include "../includes/push_swap.h"
 
-void	init_stacks(int argc, char **argv, t_stack *n_stack, t_sstack *s_stack)
+static void	add_sp_val(char **splitted, t_stack *n_stack, t_sstack *s_stack, int *j)
 {
-	int		i;
-	size_t	x;
+	int	l;
+	int	i;
+
+	l = 0;
+	i = 0;
+	while (splitted[l])
+		l++;
+	while (i < l)
+	{
+		n_stack->stack_a[*j] = ft_latoi(splitted[i]);
+		s_stack->ss[*j] = ft_latoi(splitted[i]);
+		i++;
+		*j = *j + 1;
+	}
+}
+
+static int	check_space(char *argv)
+{
+	int	i;
 
 	i = 1;
-	x = 0;
-	n_stack->stack_a = ft_calloc(argc - 1, sizeof(int));
-	n_stack->stack_b = ft_calloc(argc - 1, sizeof(int));
-	s_stack->ss = ft_calloc(argc - 1, sizeof(int));
-	if (!n_stack->stack_a || !n_stack->stack_b)
-		return ;
-	n_stack->l_a = argc - 1;
-    n_stack->l_b = 0;
-	s_stack->l = argc - 1;
-	while (i < argc)
+	while (argv[i])
 	{
-		n_stack->stack_a[x] = ft_latoi(argv[i]);
-		s_stack->ss[x] = ft_latoi(argv[i]);
-		x++;
+		if (argv[i] == ' ')
+			return (1);
 		i++;
 	}
+	return (0);
+}
+
+static void	handle_sp_args(char **argv, t_stack *n_stack, t_sstack *s_stack)
+{
+	int	i;
+	int	j;
+	char	**sp;
+	
+	i = 1;
+	j = 0;
+	while (argv[i])
+	{
+		if (check_space(argv[i]) == 0)
+		{
+			n_stack->stack_a[j] = ft_latoi(argv[i]);
+			s_stack->ss[j] = ft_latoi(argv[i]);
+			j++;
+		}
+		else
+		{
+			sp = ft_split(argv[i], ' ');
+			add_sp_val(sp, n_stack, s_stack, &j);
+		}
+		i++;
+	}
+	n_stack->l_a = j;
+	s_stack->l = j;
+}
+
+static int	params_length(char **argv)
+{
+	int	i;
+	int	j;
+	int	r;
+	char	**sp;
+
+	i = 1;
+	j = 0;
+	while (argv[i])
+	{
+		if (check_space(argv[i]) == 0)
+			j++;
+		else
+		{
+			sp = ft_split(argv[i], ' ');
+			r = 0;
+			while (sp[r])
+			{
+				r++;
+			}
+			j += r;
+		}
+		i++;
+	}
+	return (j);
+}
+
+void	init_stacks(int argc, char **argv, t_stack *n_stack, t_sstack *s_stack)
+{
+	int	l;
+	
+	if (argc == 0)
+		return ;
+	l = params_length(argv);
+	n_stack->stack_a = ft_calloc(l, sizeof(int));
+	n_stack->stack_b = ft_calloc(l, sizeof(int));
+	s_stack->ss = ft_calloc(l, sizeof(int));
+	if (!n_stack->stack_a || !n_stack->stack_b || !s_stack->ss)
+		return ;
+	n_stack->l_b = 0;
+	handle_sp_args(argv, n_stack, s_stack);
 }

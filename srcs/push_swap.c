@@ -46,7 +46,7 @@ static void	handle_stack_b(t_stack *n_stack, t_sstack *s_stack)
 	}
 }
 
-/*static void print_a(t_stack *n_stack)
+static void print_a(t_stack *n_stack)
 {
 	int	i;
 
@@ -56,7 +56,7 @@ static void	handle_stack_b(t_stack *n_stack, t_sstack *s_stack)
 		printf("A[%d]: %d\n", i, n_stack->stack_a[i]);
 		i++;
 	}
-}*/
+}
 
 /*static void print_b(t_stack *n_stack)
 {
@@ -86,7 +86,7 @@ int	main(int argc, char **argv)
 		handle_stack_b(&n_stack, &s_stack);
 	}
 	printf("R: %ld\n", r);
-	//print_a(&n_stack);
+	print_a(&n_stack);
 	//printf("\n");
 	//print_b(&n_stack);
 	return (0);

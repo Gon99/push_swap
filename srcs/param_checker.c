@@ -39,7 +39,7 @@ static int	check_long_atoi(char **params)
 	int	i;
 	int	r;
 
-	i = 0;
+	i = 1;
 	r = 1;
 	while (params[i] && r == 1)
 	{
@@ -59,6 +59,5 @@ long	handle_params(int argc, char **params)
 		r = 0;
 	r = check_repeated_numbers(params);
 	r = check_long_atoi(params);
-	printf("R2: %ld\n", r);
 	return (r);
 }
