@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:46:16 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/13 16:28:24 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/14 16:45:59 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ static int	check_space(char *argv)
 
 static void	handle_sp_args(char **argv, t_stack *n_stack, t_sstack *s_stack)
 {
-	int	i;
-	int	j;
+	int		i;
+	int		j;
 	char	**sp;
 	
 	i = 1;
@@ -69,13 +69,14 @@ static void	handle_sp_args(char **argv, t_stack *n_stack, t_sstack *s_stack)
 	}
 	n_stack->l_a = j;
 	s_stack->l = j;
+	free_sp(sp);
 }
 
 static int	params_length(char **argv)
 {
-	int	i;
-	int	j;
-	int	r;
+	int		i;
+	int		j;
+	int		r;
 	char	**sp;
 
 	i = 1;
@@ -96,6 +97,7 @@ static int	params_length(char **argv)
 		}
 		i++;
 	}
+	free_sp(sp);
 	return (j);
 }
 

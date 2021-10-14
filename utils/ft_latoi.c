@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 15:43:46 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/13 16:35:57 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/14 13:55:05 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static int	is_space(char s)
 		is_s = 1;
 	return (is_s);
 }
-#include <stdio.h>
+
 int	ft_latoi(const char *str)
 {
 	char	*aux;

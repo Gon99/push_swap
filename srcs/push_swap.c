@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 12:28:47 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/13 16:38:42 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/14 16:45:56 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,15 @@ static void print_a(t_stack *n_stack)
 	}
 }*/
 
+void	handle_error(int err)
+{
+	if (err == 0)
+	{
+		write(1, "Error\n", 6);
+		exit(1);
+	}
+}
+
 int	main(int argc, char **argv)
 {
 	long		r;
@@ -78,16 +87,18 @@ int	main(int argc, char **argv)
 
 	r = handle_params(argc, argv);
 	init_stacks(argc, argv, &n_stack, &s_stack);
-	if (argc - 1 == 3)
+	if (r == 1)
+		r = check_rep_numbers(&n_stack);
+	handle_error(r);
+	if (n_stack.l_a == 3)
 		short_sort(&n_stack);
 	while(!a_is_sorted(&n_stack))
 	{
 		handle_stack_a(&n_stack, &s_stack);
 		handle_stack_b(&n_stack, &s_stack);
 	}
-	printf("R: %ld\n", r);
 	print_a(&n_stack);
-	//printf("\n");
-	//print_b(&n_stack);
+	//free_stacks(&n_stack, &s_stack);
+	system("leaks -q push_swap");
 	return (0);
 }

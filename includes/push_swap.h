@@ -32,6 +32,7 @@ typedef struct s_stack
 }	t_sstack;
 
 long		handle_params(int argc, char **params);
+int     check_rep_numbers(t_stack *n_stack);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_latoi(char const *str);
 int		a_is_sorted(t_stack *n_stack);
@@ -59,5 +60,8 @@ int		n_of_chunks(t_stack *n_stack);
 int		get_chunk(t_stack *n_stack, int nc);
 void	do_last_chunk_b(t_stack *n_stack, t_sstack *s_stack, int *chunk);
 char    **ft_split(char const *s, char c);
+int     ft_strlen(char *str);
+void    free_stacks(t_stack *n_stack, t_sstack *s_stack);
+void    free_sp(char **sp);
 
 #endif
