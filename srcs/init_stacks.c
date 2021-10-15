@@ -69,7 +69,7 @@ static void	handle_sp_args(char **argv, t_stack *n_stack, t_sstack *s_stack)
 	}
 	n_stack->l_a = j;
 	s_stack->l = j;
-	free_sp(sp);
+	//free_sp(sp);
 }
 
 static int	params_length(char **argv)
@@ -97,7 +97,7 @@ static int	params_length(char **argv)
 		}
 		i++;
 	}
-	free_sp(sp);
+	//free_sp(sp);
 	return (j);
 }
 

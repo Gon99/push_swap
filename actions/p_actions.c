@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 16:19:40 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/07 13:02:40 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/15 11:30:53 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	do_pa(t_stack *n_stack)
 		i++;
 	}
 	ft_memcpy(n_stack->stack_a, new_stack, n_stack->l_a);
-	//free(new_stack);
+	free(new_stack);
 }
 
 void	do_pb(t_stack *n_stack)
@@ -65,5 +65,5 @@ void	do_pb(t_stack *n_stack)
 		i++;
 	}
 	ft_memcpy(n_stack->stack_b, new_stack, n_stack->l_b);
-	//free(new_stack);
+	free(new_stack);
 }

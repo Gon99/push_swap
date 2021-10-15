@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/07 12:36:51 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/13 11:42:50 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/15 16:47:59 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,6 @@ void	do_last_chunk_b(t_stack *n_stack, t_sstack *s_stack, int *chunk)
 
 	hl = *chunk / 2;
 	nta = *chunk - (hl + 1);
-	/*while (n_stack->stack_b[n_stack->l_b - 1] > s_stack->ss[hl])
-	{
-		do_rrb(n_stack);
-		do_pa(n_stack);
-		*chunk = *chunk - 1;
-		nta--;
-	}*/
 	while (nta > 0)
 	{
 		if (n_stack->stack_b[0] > s_stack->ss[hl])
@@ -77,6 +70,15 @@ void	do_last_chunk_b(t_stack *n_stack, t_sstack *s_stack, int *chunk)
 		else if (n_stack->stack_b[n_stack->l_b - 1] > s_stack->ss[hl])
 		{
 			do_rrb(n_stack);
+			/*NEW*/
+			/*if (n_stack->stack_b[0] < n_stack->stack_b[n_stack->l_b - 1])
+			{
+				do_rrb(n_stack);
+				do_sb(n_stack);
+				do_pa(n_stack);
+				*chunk = *chunk - 1;
+				nta--;
+			}*/
 			do_pa(n_stack);
 			*chunk = *chunk - 1;
 			nta--;

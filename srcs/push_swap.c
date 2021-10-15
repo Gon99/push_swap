@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 12:28:47 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/14 16:45:56 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/15 15:08:11 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static void	handle_stack_b(t_stack *n_stack, t_sstack *s_stack)
 	}
 }
 
-static void print_a(t_stack *n_stack)
+/*static void print_a(t_stack *n_stack)
 {
 	int	i;
 
@@ -56,7 +56,7 @@ static void print_a(t_stack *n_stack)
 		printf("A[%d]: %d\n", i, n_stack->stack_a[i]);
 		i++;
 	}
-}
+}*/
 
 /*static void print_b(t_stack *n_stack)
 {
@@ -97,8 +97,8 @@ int	main(int argc, char **argv)
 		handle_stack_a(&n_stack, &s_stack);
 		handle_stack_b(&n_stack, &s_stack);
 	}
-	print_a(&n_stack);
+	//print_a(&n_stack);
 	//free_stacks(&n_stack, &s_stack);
-	system("leaks -q push_swap");
+	//system("leaks -q push_swap");
 	return (0);
 }
