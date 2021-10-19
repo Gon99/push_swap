@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 12:28:47 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/18 16:41:59 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/19 17:02:15 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	handle_stack_a(t_stack *n_stack, t_sstack *s_stack)
 		do_sa(n_stack);
 }
 
-static void	handle_stack_b(t_stack *n_stack, t_sstack *s_stack)
+static void	handle_stack_b(t_stack *n_stack)
 {
 	while (n_stack->l_b > 0)
 	{
@@ -42,8 +42,16 @@ static void	handle_stack_b(t_stack *n_stack, t_sstack *s_stack)
 			pull_all_b(n_stack);
 			break ;
 		}
-		mp_algorithm_b(n_stack, s_stack);
+		mp_algorithm_b(n_stack);
 	}
+}
+
+static void	handle_stack_a_big(t_stack *n_stack, t_sstack *s_stack)
+{
+	s_stack->l = n_stack->l_a;
+	ft_memcpy(s_stack->ss, n_stack->stack_a, n_stack->l_a);
+	sort_n_stack(s_stack);
+	mp_algorithm_a_big(n_stack, s_stack);
 }
 
 /*static void print_a(t_stack *n_stack)
@@ -58,7 +66,7 @@ static void	handle_stack_b(t_stack *n_stack, t_sstack *s_stack)
 	}
 }*/
 
-/*static void print_b(t_stack *n_stack)
+static void print_b(t_stack *n_stack)
 {
 	int	i;
 
@@ -68,7 +76,7 @@ static void	handle_stack_b(t_stack *n_stack, t_sstack *s_stack)
 		printf("B[%d]: %d\n", i, n_stack->stack_b[i]);
 		i++;
 	}
-}*/
+}
 
 void	handle_error(int err)
 {
@@ -92,10 +100,26 @@ int	main(int argc, char **argv)
 	handle_error(r);
 	if (n_stack.l_a == 3)
 		short_sort(&n_stack);
-	while(!a_is_sorted(&n_stack))
+	else if (n_stack.l_a <= 100)
 	{
-		handle_stack_a(&n_stack, &s_stack);
-		handle_stack_b(&n_stack, &s_stack);
+		while(!a_is_sorted(&n_stack))
+		{
+			handle_stack_a(&n_stack, &s_stack);
+			handle_stack_b(&n_stack);
+		}
+	}
+	else
+	{
+		int	x = 0;
+		while (!a_is_sorted(&n_stack))
+		{
+			if (x == 1)
+				break;
+			handle_stack_a_big(&n_stack, &s_stack);
+			print_b(&n_stack);
+			x++;
+			//handle_stack_b_big(&n_stack, &s_stack);
+		}
 	}
 	//print_a(&n_stack);
 	//free_stacks(&n_stack, &s_stack);

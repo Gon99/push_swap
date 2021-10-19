@@ -54,7 +54,7 @@ void	do_pa(t_stack *n_stack);
 void	do_pb(t_stack *n_stack);
 void	short_sort(t_stack *n_stack);
 void	mp_algorithm_a(t_stack *n_stack, t_sstack *s_stack);
-void	mp_algorithm_b(t_stack *n_stack, t_sstack *s_stack);
+void	mp_algorithm_b(t_stack *n_stack/*, t_sstack *s_stack*/);
 void	sort_n_stack(t_sstack *s_stack);
 int		n_of_chunks(t_stack *n_stack);
 int		get_chunk(t_stack *n_stack, int nc);
@@ -63,5 +63,6 @@ char    **ft_split(char const *s, char c);
 int     ft_strlen(char *str);
 void    free_stacks(t_stack *n_stack, t_sstack *s_stack);
 void    free_sp(char **sp);
+void    mp_algorithm_a_big(t_stack *n_stack, t_sstack *s_stack);
 
 #endif

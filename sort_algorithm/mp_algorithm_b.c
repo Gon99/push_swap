@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:55:14 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/18 16:42:08 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/19 13:22:15 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,7 +106,7 @@ static int	idx_of_max_val(t_stack *n_stack)
 	return (idx);
 }
 
-static int	idx_of_min_val(t_stack *n_stack)
+/*static int	idx_of_min_val(t_stack *n_stack)
 {
 	int	i;
 	int	idx;
@@ -126,9 +126,9 @@ static int	idx_of_min_val(t_stack *n_stack)
 	}
 	return (idx);
 	
-}
+}*/
 
-static int	get_min_val(t_stack *n_stack)
+/*static int	get_min_val(t_stack *n_stack)
 {
 	int	min;
 	int	i;
@@ -142,19 +142,15 @@ static int	get_min_val(t_stack *n_stack)
 		i++;
 	}
 	return (min);
-}
+}*/
 
-static void	do_mp_b(t_stack *n_stack, int *chunk)
+static void	do_mp_b(t_stack *n_stack)
 {
 	int	max;
 	int	idx;
-	int	min;
-	int	idx2;
 
 	idx = idx_of_max_val(n_stack);
 	max = get_max_val_of_chunk(n_stack);
-	min = get_min_val(n_stack);
-	idx2 = idx_of_min_val(n_stack);
 	/*printf("IDX: %d\n", idx);
 	printf("MAX:  %d\n", max);
 	printf("LB:  %d\n", n_stack->l_b / 2);
@@ -167,7 +163,6 @@ static void	do_mp_b(t_stack *n_stack, int *chunk)
 			if (n_stack->stack_b[0] == max)
 			{
 				do_pa(n_stack);
-				*chunk = *chunk - 1;
 				break ;
 			}
 			else
@@ -182,7 +177,6 @@ static void	do_mp_b(t_stack *n_stack, int *chunk)
 			{
 				do_rrb(n_stack);
 				do_pa(n_stack);
-				*chunk = *chunk - 1;
 				break;
 			}
 			else
@@ -191,14 +185,14 @@ static void	do_mp_b(t_stack *n_stack, int *chunk)
 	}
 }
 
-void	mp_algorithm_b(t_stack *n_stack, t_sstack *s_stack)
+void	mp_algorithm_b(t_stack *n_stack/*, t_sstack *s_stack*/)
 {
-	int	chunk;
-	int	nc;
+	//int	chunk;
+	//int	nc;
 
-	s_stack->l = 0;
-	nc = n_of_chunks(n_stack);
-	chunk = 0;
+	//s_stack->l = 0;
+	//nc = n_of_chunks(n_stack);
+	//chunk = 0;
 	while (n_stack->l_b > 0)
 	{
 		/*if (chunk == 0)
@@ -212,8 +206,8 @@ void	mp_algorithm_b(t_stack *n_stack, t_sstack *s_stack)
 			handle_two_b(n_stack, &chunk);
 		else
 			do_mp_b(n_stack, &chunk);*/
-		do_mp_b(n_stack, &chunk);
-		if (chunk == 0)
-			nc--;
+		do_mp_b(n_stack);
+		/*if (chunk == 0)
+			nc--;*/
 	}
 }
