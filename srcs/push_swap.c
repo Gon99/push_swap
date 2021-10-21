@@ -46,37 +46,29 @@ static void	handle_stack_b(t_stack *n_stack)
 	}
 }
 
-static void	handle_stack_a_big(t_stack *n_stack, t_sstack *s_stack)
-{
-	s_stack->l = n_stack->l_a;
-	ft_memcpy(s_stack->ss, n_stack->stack_a, n_stack->l_a);
-	sort_n_stack(s_stack);
-	mp_algorithm_a_big(n_stack, s_stack);
-}
-
 /*static void print_a(t_stack *n_stack)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (i < n_stack->l_a)
 	{
-		printf("A[%d]: %d\n", i, n_stack->stack_a[i]);
+		printf("A[%ld]: %d\n", i, n_stack->stack_a[i]);
 		i++;
 	}
 }*/
 
-static void print_b(t_stack *n_stack)
+/*static void print_b(t_stack *n_stack)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (i < n_stack->l_b - 1)
+	while (i < n_stack->l_b)
 	{
-		printf("B[%d]: %d\n", i, n_stack->stack_b[i]);
+		printf("B[%ld]: %d\n", i, n_stack->stack_b[i]);
 		i++;
 	}
-}
+}*/
 
 void	handle_error(int err)
 {
@@ -100,7 +92,7 @@ int	main(int argc, char **argv)
 	handle_error(r);
 	if (n_stack.l_a == 3)
 		short_sort(&n_stack);
-	else if (n_stack.l_a <= 100)
+	if (n_stack.l_a <= 100)
 	{
 		while(!a_is_sorted(&n_stack))
 		{
@@ -109,19 +101,9 @@ int	main(int argc, char **argv)
 		}
 	}
 	else
-	{
-		int	x = 0;
-		while (!a_is_sorted(&n_stack))
-		{
-			if (x == 1)
-				break;
-			handle_stack_a_big(&n_stack, &s_stack);
-			print_b(&n_stack);
-			x++;
-			//handle_stack_b_big(&n_stack, &s_stack);
-		}
-	}
+		do_big_sort(&n_stack);
 	//print_a(&n_stack);
+	//print_b(&n_stack);
 	//free_stacks(&n_stack, &s_stack);
 	//system("leaks -q push_swap");
 	return (0);

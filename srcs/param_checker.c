@@ -68,12 +68,12 @@ int		check_letters(char **argv)
 		l = ft_strlen(argv[i]);
 		while (j < l)
 		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != 32 )
+			/*if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != 32 )
 				if (argv[i][j] != '-')
 					return (0);
 				if (argv[i][j] == '-' && (argv[i][j + 1] < '0' || argv[i][j + 1] > '9'))
 					return (0);
-			j++;
+	*/		j++;
 		}
 		i++;
 	}

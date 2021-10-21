@@ -16,8 +16,7 @@ SRCS = ./utils/ft_latoi.c ./srcs/push_swap.c ./utils/ft_strcmp.c \
 	   ./actions/p_actions.c ./actions/rr_actions.c ./utils/ft_memcpy.c \
 	   ./sort_algorithm/short_sort.c ./sort_algorithm/mp_algorithm_a.c \
 	./sort_algorithm/sort_n_stack.c ./sort_algorithm/mp_algorithm_b.c \
-	./sort_algorithm/handle_chunks.c ./utils/ft_split.c ./utils/ft_strlen.c \
-	./free/free.c ./sort_algorithm/mp_algorithm_a_big.c
+	./sort_algorithm/handle_chunks.c ./utils/ft_split.c ./utils/ft_strlen.c ./free/free.c ./sort_algorithm/big_sort.c
 	
 OBJS = ${SRCS:.c=.o}
 NAME = push_swap

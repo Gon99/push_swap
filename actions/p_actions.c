@@ -14,7 +14,7 @@
 
 void	do_pa(t_stack *n_stack)
 {
-	int	i;
+	size_t	i;
 	int	*new_stack;
 
 	write(1, "pa\n", 3);
@@ -42,7 +42,7 @@ void	do_pa(t_stack *n_stack)
 
 void	do_pb(t_stack *n_stack)
 {
-	int	i;
+	size_t	i;
 	int	*new_stack;
 
 	write(1, "pb\n", 3);

@@ -57,16 +57,6 @@ static void	do_second_half(t_stack *n_stack, t_sstack *s_stack, int hl, int *na)
 	{
 		*na = *na + 1;
 		do_rra(n_stack);
-		/* NEW */
-		/*if (n_stack->stack_a[0] > n_stack->stack_a[n_stack->l_a - 1])
-		{
-			do_rra(n_stack);
-			do_sa(n_stack);
-			do_pb(n_stack);
-			if (n_stack->stack_b[0] < n_stack->stack_b[n_stack->l_b - 1])
-				do_rb(n_stack);
-			*na = *na + 1;
-		}*/
 		do_pb(n_stack);
 		if (n_stack->stack_b[0] < n_stack->stack_b[n_stack->l_b - 1])
 			do_rb(n_stack);
@@ -75,8 +65,6 @@ static void	do_second_half(t_stack *n_stack, t_sstack *s_stack, int hl, int *na)
 	{
 		if (n_stack->stack_a[0] < s_stack->ss[hl])
 		{
-			//printf("0: %d\n", n_stack->stack_a[0]);
-			//printf("1: %d\n", s_stack->ss[hl]);
 			if (n_stack->stack_a[0] > n_stack->stack_a[1])
 				do_sa(n_stack);
 			*na = *na + 1;

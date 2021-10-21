@@ -19,10 +19,10 @@
 
 typedef struct n_stack
 {
-	int	*stack_a;
-	int	*stack_b;
-	int	l_a;
-	int	l_b;
+	int     *stack_a;
+	int     *stack_b;
+	size_t  l_a;
+	size_t  l_b;
 }	t_stack;
 
 typedef struct s_stack
@@ -63,6 +63,6 @@ char    **ft_split(char const *s, char c);
 int     ft_strlen(char *str);
 void    free_stacks(t_stack *n_stack, t_sstack *s_stack);
 void    free_sp(char **sp);
-void    mp_algorithm_a_big(t_stack *n_stack, t_sstack *s_stack);
+void    do_big_sort(t_stack *n_stack);
 
 #endif
