@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/13 15:48:37 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/13 15:49:32 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/22 16:37:29 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,4 +101,3 @@ char	**ft_split(char const *s, char c)
 	fill_split(s, str, c);
 	return (str);
 }
-

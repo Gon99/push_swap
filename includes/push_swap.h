@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 12:27:28 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/07 13:19:35 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:52:51 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 typedef struct n_stack
 {
-	int     *stack_a;
-	int     *stack_b;
-	size_t  l_a;
-	size_t  l_b;
+	int		*stack_a;
+	int		*stack_b;
+	size_t	l_a;
+	size_t	l_b;
 }	t_stack;
 
 typedef struct s_stack
@@ -31,8 +31,8 @@ typedef struct s_stack
 	int	l;
 }	t_sstack;
 
-long		handle_params(int argc, char **params);
-int     check_rep_numbers(t_stack *n_stack);
+long	handle_params(int argc, char **params);
+int		check_rep_numbers(t_stack *n_stack);
 int		ft_strcmp(char *s1, char *s2);
 int		ft_latoi(char const *str);
 int		a_is_sorted(t_stack *n_stack);
@@ -54,15 +54,15 @@ void	do_pa(t_stack *n_stack);
 void	do_pb(t_stack *n_stack);
 void	short_sort(t_stack *n_stack);
 void	mp_algorithm_a(t_stack *n_stack, t_sstack *s_stack);
-void	mp_algorithm_b(t_stack *n_stack/*, t_sstack *s_stack*/);
+void	mp_algorithm_b(t_stack *n_stack);
 void	sort_n_stack(t_sstack *s_stack);
 int		n_of_chunks(t_stack *n_stack);
 int		get_chunk(t_stack *n_stack, int nc);
 void	do_last_chunk_b(t_stack *n_stack, t_sstack *s_stack, int *chunk);
-char    **ft_split(char const *s, char c);
-int     ft_strlen(char *str);
-void    free_stacks(t_stack *n_stack, t_sstack *s_stack);
-void    free_sp(char **sp);
-void    do_big_sort(t_stack *n_stack);
+char	**ft_split(char const *s, char c);
+int		ft_strlen(char *str);
+void	free_stacks(t_stack *n_stack, t_sstack *s_stack);
+void	free_sp(char **sp);
+void	do_big_sort(t_stack *n_stack);
 
 #endif

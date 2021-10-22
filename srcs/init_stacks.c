@@ -6,13 +6,13 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:46:16 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/19 13:22:46 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/22 16:31:48 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	add_sp_val(char **splitted, t_stack *n_stack, t_sstack *s_stack, int *j)
+static void	sp_val(char **splitted, t_stack *n_stack, t_sstack *s_stack, int *j)
 {
 	int	l;
 	int	i;
@@ -49,7 +49,7 @@ static void	handle_sp_args(char **argv, t_stack *n_stack, t_sstack *s_stack)
 	int		i;
 	int		j;
 	char	**sp;
-	
+
 	i = 1;
 	j = 0;
 	while (argv[i])
@@ -63,7 +63,7 @@ static void	handle_sp_args(char **argv, t_stack *n_stack, t_sstack *s_stack)
 		else
 		{
 			sp = ft_split(argv[i], ' ');
-			add_sp_val(sp, n_stack, s_stack, &j);
+			sp_val(sp, n_stack, s_stack, &j);
 		}
 		i++;
 	}
@@ -104,7 +104,7 @@ static int	params_length(char **argv)
 void	init_stacks(int argc, char **argv, t_stack *n_stack, t_sstack *s_stack)
 {
 	int	l;
-	
+
 	if (argc == 0)
 		return ;
 	l = params_length(argv);

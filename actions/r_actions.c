@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 15:42:38 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/07 13:03:04 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/22 11:46:56 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	do_ra(t_stack *n_stack)
 {
-	int	aux;
-	int	i;
+	int		aux;
+	size_t	i;
 
 	write(1, "ra\n", 3);
 	i = 0;
@@ -30,8 +30,8 @@ void	do_ra(t_stack *n_stack)
 
 void	do_rb(t_stack *n_stack)
 {
-	int	aux;
-	int	i;
+	int		aux;
+	size_t	i;
 
 	write(1, "rb\n", 3);
 	i = 0;

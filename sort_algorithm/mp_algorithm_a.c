@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 11:57:19 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/15 17:03:40 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:55:05 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	a_is_sorted(t_stack *n_stack)
 {
-	int	i;
-	int	is_sorted;
+	size_t	i;
+	int		is_sorted;
 
 	i = 0;
 	is_sorted = 1;
@@ -28,16 +28,6 @@ int	a_is_sorted(t_stack *n_stack)
 	return (is_sorted);
 }
 
-void print_s(t_sstack *s_stack)
-{
-	int	i = 0;
-	while (i < s_stack->l -1)
-	{
-		printf("s[%d]: %d\n", i, s_stack->ss[i]);
-		i++;
-	}
-}
-
 static void	do_first_half(t_stack *n_stack, t_sstack *s_stack, int hl, int *na)
 {
 	while (n_stack->stack_a[0] < s_stack->ss[hl])
@@ -46,8 +36,6 @@ static void	do_first_half(t_stack *n_stack, t_sstack *s_stack, int hl, int *na)
 			do_sa(n_stack);
 		*na = *na + 1;
 		do_pb(n_stack);
-		/*if (n_stack->stack_b[0] < n_stack->stack_b[n_stack->l_b - 1])
-			do_rb(n_stack);*/
 	}
 }
 

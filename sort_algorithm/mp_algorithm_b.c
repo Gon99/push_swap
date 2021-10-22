@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:55:14 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/19 13:22:15 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/22 16:07:44 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	b_is_sorted(t_stack *n_stack)
 {
-	int	i;
-	int	is_sorted;
+	size_t	i;
+	int		is_sorted;
 
 	i = 0;
 	is_sorted = 1;
@@ -28,51 +28,10 @@ int	b_is_sorted(t_stack *n_stack)
 	return (is_sorted);
 }
 
-/*static void	handle_two_b(t_stack *n_stack, int *chunk)
-{
-	if (n_stack->stack_b[0] < n_stack->stack_b[1])
-		do_sb(n_stack);
-	do_pa(n_stack);
-	do_pa(n_stack);
-	*chunk -= 2;
-}*/
-
-/*static void	do_second_half_b(t_stack *n_stack, t_sstack *s_stack, int *chunk)
-{
-	int	crb;
-	int	nta;
-	int	hl;
-
-	crb = 0;
-	hl = *chunk / 2;
-	nta = *chunk - (hl + 1);
-	while (nta > 0)
-	{
-		if (n_stack->stack_b[0] > s_stack->ss[hl])
-		{
-            if (n_stack->stack_b[0] < n_stack->stack_b[1])
-                do_sb(n_stack);
-			do_pa(n_stack);
-			*chunk = *chunk - 1;
-			nta--;
-		}
-		else
-		{
-			do_rb(n_stack);
-			crb++;
-		}
-	}
-	while (crb > 0)
-	{
-		do_rrb(n_stack);
-		crb--;
-	}
-}*/
-
 static int	get_max_val_of_chunk(t_stack *n_stack)
 {
-	int	max;
-	int	i;
+	int		max;
+	size_t	i;
 
 	max = n_stack->stack_b[0];
 	i = 1;
@@ -87,9 +46,9 @@ static int	get_max_val_of_chunk(t_stack *n_stack)
 
 static int	idx_of_max_val(t_stack *n_stack)
 {
-	int	i;
-	int	idx;
-	int	max;
+	size_t	i;
+	int		idx;
+	int		max;
 
 	max = n_stack->stack_b[0];
 	i = 1;
@@ -106,108 +65,44 @@ static int	idx_of_max_val(t_stack *n_stack)
 	return (idx);
 }
 
-/*static int	idx_of_min_val(t_stack *n_stack)
+static void	get_back_nums(t_stack *n_stack, int max)
 {
-	int	i;
-	int	idx;
-	int	min;
-
-	min = n_stack->stack_b[0];
-	i = 1;
-	idx = 0;
-	while (i < n_stack->l_b - 1)
+	while (1)
 	{
-		if (n_stack->stack_b[i] > min)
+		if (n_stack->stack_b[n_stack->l_b - 1] == max)
 		{
-			min = n_stack->stack_b[i];
-			idx = i;
+			do_rrb(n_stack);
+			do_pa(n_stack);
+			break ;
 		}
-		i++;
-	}
-	return (idx);
-	
-}*/
-
-/*static int	get_min_val(t_stack *n_stack)
-{
-	int	min;
-	int	i;
-
-	i = 1;
-	min = n_stack->stack_b[0];
-	while (i < n_stack->l_b - 1)
-	{
-		if (n_stack->stack_b[i] < min)
-			min = n_stack->stack_b[i];
-		i++;
-	}
-	return (min);
-}*/
-
-static void	do_mp_b(t_stack *n_stack)
-{
-	int	max;
-	int	idx;
-
-	idx = idx_of_max_val(n_stack);
-	max = get_max_val_of_chunk(n_stack);
-	/*printf("IDX: %d\n", idx);
-	printf("MAX:  %d\n", max);
-	printf("LB:  %d\n", n_stack->l_b / 2);
-	printf("LB2:  %d\n", n_stack->l_b);
-	*/
-	if (idx < n_stack->l_b / 2)
-	{
-		while (1)
-		{
-			if (n_stack->stack_b[0] == max)
-			{
-				do_pa(n_stack);
-				break ;
-			}
-			else
-				do_rb(n_stack);
-		}
-	}
-	else
-	{
-		while (1)
-		{
-			if (n_stack->stack_b[n_stack->l_b - 1] == max)
-			{
-				do_rrb(n_stack);
-				do_pa(n_stack);
-				break;
-			}
-			else
-				do_rrb(n_stack);
-		}
+		else
+			do_rrb(n_stack);
 	}
 }
 
-void	mp_algorithm_b(t_stack *n_stack/*, t_sstack *s_stack*/)
+void	mp_algorithm_b(t_stack *n_stack)
 {
-	//int	chunk;
-	//int	nc;
+	int		max;
+	size_t	idx;
 
-	//s_stack->l = 0;
-	//nc = n_of_chunks(n_stack);
-	//chunk = 0;
+	idx = idx_of_max_val(n_stack);
+	max = get_max_val_of_chunk(n_stack);
 	while (n_stack->l_b > 0)
 	{
-		/*if (chunk == 0)
-			chunk = get_chunk(n_stack, nc);
-		if (chunk == 1)
+		if (idx < n_stack->l_b / 2)
 		{
-			do_pa(n_stack);
-			chunk--;
+			while (1)
+			{
+				if (n_stack->stack_b[0] == get_max_val_of_chunk(n_stack))
+				{
+					do_pa(n_stack);
+					break ;
+				}
+				else
+					do_rb(n_stack);
+			}
 		}
-		else if (chunk == 2)
-			handle_two_b(n_stack, &chunk);
 		else
-			do_mp_b(n_stack, &chunk);*/
-		do_mp_b(n_stack);
-		/*if (chunk == 0)
-			nc--;*/
+			get_back_nums(n_stack, max);
 	}
 }

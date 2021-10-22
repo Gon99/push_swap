@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 13:32:04 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/14 15:56:32 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/22 16:32:41 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ static int	check_long_atoi(char **params)
 		{
 			if (params[i][0] == '-' && params[i][1] == '0')
 				r = 1;
-			else if(params[i][0] == '0')
+			else if (params[i][0] == '0')
 				r = 1;
 			else
 				r = 0;
@@ -35,10 +35,10 @@ static int	check_long_atoi(char **params)
 	return (r);
 }
 
-int		check_rep_numbers(t_stack *n_stack)
+int	check_rep_numbers(t_stack *n_stack)
 {
-	int	i;
-	int	j;
+	size_t	i;
+	size_t	j;
 
 	i = 0;
 	while (i < n_stack->l_a - 1)
@@ -55,7 +55,7 @@ int		check_rep_numbers(t_stack *n_stack)
 	return (1);
 }
 
-int		check_letters(char **argv)
+int	check_letters(char **argv)
 {
 	int	l;
 	int	i;
@@ -68,12 +68,12 @@ int		check_letters(char **argv)
 		l = ft_strlen(argv[i]);
 		while (j < l)
 		{
-			/*if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != 32 )
-				if (argv[i][j] != '-')
+			if (argv[i][j] < '0' || argv[i][j] > '9')
+			{
+				if (argv[i][j] != 32 && argv[i][j] != '+' && argv[i][j] != '-')
 					return (0);
-				if (argv[i][j] == '-' && (argv[i][j + 1] < '0' || argv[i][j + 1] > '9'))
-					return (0);
-	*/		j++;
+			}
+			j++;
 		}
 		i++;
 	}

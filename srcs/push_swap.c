@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 12:28:47 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/19 17:02:15 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/22 16:37:01 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,6 @@ static void	handle_stack_b(t_stack *n_stack)
 	}
 }
 
-/*static void print_a(t_stack *n_stack)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n_stack->l_a)
-	{
-		printf("A[%ld]: %d\n", i, n_stack->stack_a[i]);
-		i++;
-	}
-}*/
-
-/*static void print_b(t_stack *n_stack)
-{
-	size_t	i;
-
-	i = 0;
-	while (i < n_stack->l_b)
-	{
-		printf("B[%ld]: %d\n", i, n_stack->stack_b[i]);
-		i++;
-	}
-}*/
-
 void	handle_error(int err)
 {
 	if (err == 0)
@@ -85,6 +61,8 @@ int	main(int argc, char **argv)
 	t_stack		n_stack;
 	t_sstack	s_stack;
 
+	if (argc == 1)
+		return (0);
 	r = handle_params(argc, argv);
 	init_stacks(argc, argv, &n_stack, &s_stack);
 	if (r == 1)
@@ -94,7 +72,7 @@ int	main(int argc, char **argv)
 		short_sort(&n_stack);
 	if (n_stack.l_a <= 100)
 	{
-		while(!a_is_sorted(&n_stack))
+		while (!a_is_sorted(&n_stack))
 		{
 			handle_stack_a(&n_stack, &s_stack);
 			handle_stack_b(&n_stack);
@@ -102,9 +80,5 @@ int	main(int argc, char **argv)
 	}
 	else
 		do_big_sort(&n_stack);
-	//print_a(&n_stack);
-	//print_b(&n_stack);
-	//free_stacks(&n_stack, &s_stack);
-	//system("leaks -q push_swap");
 	return (0);
 }

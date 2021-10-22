@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 16:19:40 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/15 11:30:53 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/22 15:49:36 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	do_pa(t_stack *n_stack)
 {
 	size_t	i;
-	int	*new_stack;
+	int		*new_stack;
 
 	write(1, "pa\n", 3);
 	n_stack->l_a++;
@@ -43,7 +43,7 @@ void	do_pa(t_stack *n_stack)
 void	do_pb(t_stack *n_stack)
 {
 	size_t	i;
-	int	*new_stack;
+	int		*new_stack;
 
 	write(1, "pb\n", 3);
 	n_stack->l_b++;
