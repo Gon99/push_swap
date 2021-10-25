@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 12:46:16 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/22 16:31:48 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/25 16:40:14 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ static void	sp_val(char **splitted, t_stack *n_stack, t_sstack *s_stack, int *j)
 	{
 		n_stack->stack_a[*j] = ft_latoi(splitted[i]);
 		s_stack->ss[*j] = ft_latoi(splitted[i]);
+		free(splitted[i]);
 		i++;
 		*j = *j + 1;
 	}
@@ -64,12 +65,12 @@ static void	handle_sp_args(char **argv, t_stack *n_stack, t_sstack *s_stack)
 		{
 			sp = ft_split(argv[i], ' ');
 			sp_val(sp, n_stack, s_stack, &j);
+			free(sp);
 		}
 		i++;
 	}
 	n_stack->l_a = j;
 	s_stack->l = j;
-	//free_sp(sp);
 }
 
 static int	params_length(char **argv)
@@ -88,16 +89,14 @@ static int	params_length(char **argv)
 		else
 		{
 			sp = ft_split(argv[i], ' ');
-			r = 0;
-			while (sp[r])
-			{
-				r++;
-			}
+			r = -1;
+			while (sp[++r])
+				free(sp[r]);
+			free(sp);
 			j += r;
 		}
 		i++;
 	}
-	//free_sp(sp);
 	return (j);
 }
 

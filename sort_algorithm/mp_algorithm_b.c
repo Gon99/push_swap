@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/04 11:55:14 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/22 16:07:44 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/25 16:38:11 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,15 +85,15 @@ void	mp_algorithm_b(t_stack *n_stack)
 	int		max;
 	size_t	idx;
 
-	idx = idx_of_max_val(n_stack);
-	max = get_max_val_of_chunk(n_stack);
 	while (n_stack->l_b > 0)
 	{
+		idx = idx_of_max_val(n_stack);
+		max = get_max_val_of_chunk(n_stack);
 		if (idx < n_stack->l_b / 2)
 		{
 			while (1)
 			{
-				if (n_stack->stack_b[0] == get_max_val_of_chunk(n_stack))
+				if (n_stack->stack_b[0] == max)
 				{
 					do_pa(n_stack);
 					break ;

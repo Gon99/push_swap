@@ -6,24 +6,26 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/22 15:53:38 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/22 16:28:33 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/25 16:37:20 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-size_t	ft_checkbin(int check, size_t bit)
+size_t	shift_right_bytes(int num, size_t pos)
 {
-	if (!check)
+	int	r;
+
+	r = 1;
+	if (!num)
 		return (1);
-	check >>= bit;
-	if (check & 1)
+	num >>= pos;
+	if (num & 1)
 		return (0);
-	else
-		return (1);
+	return (r);
 }
 
-void	movestack(t_stack *n_stack, size_t bit)
+void	push_to_a(t_stack *n_stack, size_t bit)
 {
 	size_t	i;
 	size_t	l;
@@ -32,7 +34,7 @@ void	movestack(t_stack *n_stack, size_t bit)
 	l = n_stack->l_a;
 	while (i < l)
 	{
-		if (ft_checkbin(n_stack->stack_a[0], bit))
+		if (shift_right_bytes(n_stack->stack_a[0], bit))
 			do_pb(n_stack);
 		else
 			do_ra(n_stack);
@@ -40,36 +42,35 @@ void	movestack(t_stack *n_stack, size_t bit)
 	}
 }
 
-int	*ft_renamenums(t_stack *n_stack)
+int	*change_stack_a(t_stack *n_stack)
 {
 	size_t	i;
 	size_t	j;
-	size_t	val;
-	int		*newstack;
+	size_t	n_num;
+	int		*aux;
 
 	i = 0;
-	val = 0;
-	newstack = malloc(sizeof(int) * (n_stack->l_a + 1));
-	if (!newstack)
-		return (NULL);
-	newstack[n_stack->l_a] = '\0';
+	aux = malloc(sizeof(int) * (n_stack->l_a + 1));
+	if (!aux)
+		return (0);
 	while (i < n_stack->l_a)
 	{
+		n_num = 0;
 		j = 0;
 		while (j < n_stack->l_a)
 		{
 			if (n_stack->stack_a[i] > n_stack->stack_a[j])
-				val++;
+				n_num++;
 			j++;
 		}
-		newstack[i] = val;
-		val = 0;
+		aux[i] = n_num;
 		i++;
 	}
-	return (newstack);
+	free(n_stack->stack_a);
+	return (aux);
 }
 
-void	ft_combstack(t_stack *n_stack)
+void	push_to_b(t_stack *n_stack)
 {
 	size_t	i;
 	size_t	l;
@@ -90,15 +91,15 @@ void	do_big_sort(t_stack *n_stack)
 
 	i = 0;
 	x = 0;
-	n_stack->stack_a = ft_renamenums(n_stack);
+	n_stack->stack_a = change_stack_a(n_stack);
 	while (x < n_stack->l_a)
 	{
 		n_stack->stack_b[x] = -1;
 		x++;
 	}
 	while (!a_is_sorted(n_stack))
-	{	
-		movestack(n_stack, i++);
-		ft_combstack(n_stack);
+	{
+		push_to_a(n_stack, i++);
+		push_to_b(n_stack);
 	}
 }

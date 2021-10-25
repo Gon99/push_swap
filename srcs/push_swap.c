@@ -6,7 +6,7 @@
 /*   By: goliano- <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/17 12:28:47 by goliano-          #+#    #+#             */
-/*   Updated: 2021/10/22 16:37:01 by goliano-         ###   ########.fr       */
+/*   Updated: 2021/10/25 17:33:53 by goliano-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ static void	handle_stack_b(t_stack *n_stack)
 	}
 }
 
-void	handle_error(int err)
+static void	handle_error(int err, t_stack *n_stack, t_sstack *s_stack)
 {
 	if (err == 0)
 	{
 		write(1, "Error\n", 6);
+		free_stacks(n_stack, s_stack);
 		exit(1);
 	}
 }
@@ -61,16 +62,16 @@ int	main(int argc, char **argv)
 	t_stack		n_stack;
 	t_sstack	s_stack;
 
-	if (argc == 1)
+	if (argc <= 1)
 		return (0);
 	r = handle_params(argc, argv);
 	init_stacks(argc, argv, &n_stack, &s_stack);
 	if (r == 1)
 		r = check_rep_numbers(&n_stack);
-	handle_error(r);
+	handle_error(r, &n_stack, &s_stack);
 	if (n_stack.l_a == 3)
 		short_sort(&n_stack);
-	if (n_stack.l_a <= 100)
+	else if (n_stack.l_a <= 100)
 	{
 		while (!a_is_sorted(&n_stack))
 		{
@@ -80,5 +81,6 @@ int	main(int argc, char **argv)
 	}
 	else
 		do_big_sort(&n_stack);
+	free_stacks(&n_stack, &s_stack);
 	return (0);
 }
