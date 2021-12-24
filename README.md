@@ -29,7 +29,7 @@ I had three differents algorithms: one for 3 numbers or less, one for 100 number
 
 For 100 < numbers, I find the median and push everything below the median into stack b. Then I identify each the largest and smallest integer in stack b, and determine which is most efficient to rotate up/down and push back to stack a (along with the specific moves to make that happen). Then I execute those moves.
 
-For 500 < numbers, I implemented the radix sort algorithm, here is a guide you can follow that is so useful to understan the algorithm https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
+For 500 < numbers, I implemented the radix sort algorithm, here is a guide you can follow that is so useful to understand the algorithm https://medium.com/nerd-for-tech/push-swap-tutorial-fa746e6aba1e
 
 ## Usage
 
