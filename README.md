@@ -42,7 +42,7 @@ The ***push_swap*** program is used as follows:
 ```
 ## Visualizer
 
-Here you can see how my 100 sort alogrithm works:
+Here you can see how my 100 sort algorithm works:
 
 ![push_swap visualizer](https://github.com/Gon99/push_swap/blob/master/100-short.gif)
 
